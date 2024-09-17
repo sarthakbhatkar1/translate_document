@@ -6,7 +6,8 @@ import pdfplumber
 import streamlit as st
 from deep_translator import GoogleTranslator
 from fpdf import FPDF
-from gtts import gTTS
+# from gtts import gTTS
+import pyttsx3
 
 base_dir = "./data/"
 
@@ -79,11 +80,18 @@ def convert_time(seconds):
 
 
 def generate_audio(language):
+    # myobj = gTTS(text="\n\n\n".join(language), lang='en', slow=False)
+    #
+    # # Saving the converted audio in a mp3 file named
+    # myobj.save(f"{base_dir}local_audio.mp3")
+    engine = pyttsx3.init()
 
-    myobj = gTTS(text="\n\n\n".join(language), lang='en', slow=False)
-
-    # Saving the converted audio in a mp3 file named
-    myobj.save(f"{base_dir}local_audio.mp3")
+    # convert this text to speech
+    # text = "Python is a great programming language"
+    # engine.say("\n\n\n".join(language))
+    # play the speech
+    # engine.runAndWait()
+    engine.save_to_file(text="\n\n\n".join(language), filename=f"{base_dir}local_audio.mp3")
 
 
 uploaded_file = st.file_uploader("Choose a file")
@@ -122,7 +130,7 @@ if uploaded_file is not None:
         language.append(_language)
 
     with open(f"{filename}_translate.txt", "w") as ff:
-        json.dump(language, ff)
+        json.dump("\n\n\n".join(language), ff)
 
     text_data = None
     with open(f"{filename}_translate.txt", "rb") as ff:
