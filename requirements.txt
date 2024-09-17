@@ -14,7 +14,6 @@ deep-translator==1.11.4
 fpdf==1.7.2
 gitdb==4.0.11
 GitPython==3.1.43
-gTTS==2.5.3
 idna==3.10
 Jinja2==3.1.4
 jsonschema==4.23.0
@@ -35,7 +34,6 @@ pycparser==2.22
 pydeck==0.9.1
 Pygments==2.18.0
 pypdfium2==4.30.0
-pypiwin32==223
 python-dateutil==2.9.0.post0
 pyttsx3==2.97
 pytz==2024.2
